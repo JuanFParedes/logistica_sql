@@ -125,41 +125,8 @@ CREATE TABLE Seguimiento (
 );
 
 
-CREATE TABLE Logistica_Empleados (
-    empleado_id INT PRIMARY KEY,
-    nombre VARCHAR(100),
-    sucursal_id INT,
-    FOREIGN KEY (sucursal_id) REFERENCES Sucursales(sucursal_id)
-);
-
-CREATE TABLE Logistica_Empleados_Telefonos (
-    telefono_id INT PRIMARY KEY,
-    numero VARCHAR(20),
-    empleado_id INT,
-    FOREIGN KEY (empleado_id) REFERENCES Logistica_Empleados(empleado_id)
-);
-
-CREATE TABLE Logistica_Paquetes (
-    paquete_id INT PRIMARY KEY,
-    numero_seguimiento VARCHAR(50),
-    peso DECIMAL(10,2),
-    dimensiones VARCHAR(50),
-    contenido TEXT,
-    valor_declarado DECIMAL(10,2),
-    tipo_servicio VARCHAR(50),
-    estado VARCHAR(50)
-);
-
-CREATE TABLE Logistica_Envios (
-    envio_id INT PRIMARY KEY,
-    cliente_id INT,
-    paquete_id INT,
-    fecha_envio TIMESTAMP,
-    destino VARCHAR(200),
-    ruta_id INT,
-    sucursal_id INT,
-    FOREIGN KEY (cliente_id) REFERENCES Clientes(cliente_id),
-    FOREIGN KEY (paquete_id) REFERENCES Logistica_Paquetes(paquete_id),
-    FOREIGN KEY (ruta_id) REFERENCES Rutas(ruta_id),
-    FOREIGN KEY (sucursal_id) REFERENCES Sucursales(sucursal_id)
+CREATE TABLE estados (
+    estado_id INT AUTO_INCREMENT,
+    tipo VARCHAR(20),
+    CONSTRAINT Pk_id_estados PRIMARY KEY (estado_id)
 );
